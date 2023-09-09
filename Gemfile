@@ -20,7 +20,9 @@ gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
+gem 'rails_admin', '~> 3.0'
 
+gem 'cancancan'
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
@@ -72,3 +74,4 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+gem "cssbundling-rails"
