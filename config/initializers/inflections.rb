@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
+
+# config/initializers/inflections.rb
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.irregular 'leave', 'leaves'
+end
+
