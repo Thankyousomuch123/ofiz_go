@@ -4,6 +4,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new
+
+    if user.role_id == 1
+      can :read, User
+      can :index, User
+      can :create, User
+      can :edit, User if user.present?
+      can :update, User if user.present?
+    end
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
