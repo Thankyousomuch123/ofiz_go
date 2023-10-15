@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :role_permissions
+  resources :permissions
+  resources :roles
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
