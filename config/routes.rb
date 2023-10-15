@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-
+  # config/routes.rb
+  resources :users
   root "home#index"
   resources :experiences
   resources :holidays
