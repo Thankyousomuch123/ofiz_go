@@ -65,21 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_15_124441) do
     t.index ["employee_id"], name: "index_performances_on_employee_id"
   end
 
-  create_table "permissions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "role_permissions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "role_id", null: false
-    t.bigint "permission_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["permission_id"], name: "index_role_permissions_on_permission_id"
-    t.index ["role_id"], name: "index_role_permissions_on_role_id"
-  end
-
   create_table "roles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -114,7 +99,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_15_124441) do
   add_foreign_key "experiences", "employees"
   add_foreign_key "leaves", "employees"
   add_foreign_key "performances", "employees"
-  add_foreign_key "role_permissions", "permissions"
-  add_foreign_key "role_permissions", "roles"
   add_foreign_key "salaries", "employees"
 end

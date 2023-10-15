@@ -28,9 +28,11 @@
   </head>
 
   <body style="background-color:white; ">
-    <div id="left-menu">
-      <%= render 'shared/navigation' %>
-    </div>
+    <% if user_signed_in? %>
+      <div id="left-menu">
+        <%= render 'shared/navigation' %>
+      </div>
+    <% end %>
     <div id="work-area">
       <%= yield %>
     </div>
