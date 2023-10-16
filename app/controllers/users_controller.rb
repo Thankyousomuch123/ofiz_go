@@ -9,11 +9,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.save(validate: false)
       redirect_to users_path, notice: 'User was successfully created.'
     else
-      @users = User.all
-      render 'index'
+      render 'new'
     end
   end
 
@@ -37,7 +36,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :email, :password, :role)
+    params.require(:user).permit(:user_name, :email, :password, :role_id)
   end
 
 end
