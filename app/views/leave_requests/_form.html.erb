@@ -1,0 +1,49 @@
+<%= form_with(model: leave_request) do |form| %>
+  <% if leave_request.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(leave_request.errors.count, "error") %> prohibited this leave_request from being saved:</h2>
+
+      <ul>
+        <% leave_request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :leave_type, "Leave Type" %> <br>
+    <%= form.collection_select(:leave_type, LeaveTypes::TYPES, :first, :last, prompt: "Select Leave Type") %>
+  </div>
+  <br>
+
+  <div>
+    <%= form.label :start_date, style: "display: block" %>
+    <%= form.date_field :start_date %>
+  </div>
+
+  <div class="form-group">
+    <%= form.collection_select(:session, LeaveTypes::SESSIONS, :first, :last, prompt: "Select Session") %>
+  </div>
+  <br>
+
+  <br>
+  <div>
+    <%= form.label :end_date, style: "display: block" %>
+    <%= form.date_field :end_date %>
+  </div>
+  <div class="form-group">
+    <%= form.collection_select(:session, LeaveTypes::SESSIONS, :first, :last, prompt: "Select Session") %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= form.label :Remarks %><br>
+    <%= form.text_field :reason %>
+  </div>
+  <br>
+  <div>
+    <%= form.submit "Request Leave", class: "btn btn-primary" %>
+    <%= button_tag "Clear", type: "reset", class: "btn btn-secondary" %>
+  </div>
+<% end %>

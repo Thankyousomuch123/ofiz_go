@@ -1,14 +1,30 @@
 <p style="color: green"><%= notice %></p>
+<h1>Leave Balance</h1>
 
-<h1>Leaves</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Leave Type</th>
+      <th>Opening</th>
+      <th>Credited</th>
+      <th>Availed</th>
+      <th>Requested</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @leaves.each do |leave| %>
+      <tr>
+        <td><%= leave.leave_name %></td>
+        <td><%= leave.credited %></td>
+        <td><%= leave.opening %></td>
+        <td><%= leave.availed %></td>
+        <td><%= leave.requested %></td>
+        <td><%= leave.balance %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
 
-<div id="leaves">
-  <% @leaves.each do |leave| %>
-    <%= render leave %>
-    <p>
-      <%= link_to "Show this leave", leave %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New leave", new_leave_path %>
+<%= link_to "Create New Leave Request", new_leave_request_path, class: "btn btn-primary" %>
